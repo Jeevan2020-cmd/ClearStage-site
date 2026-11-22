@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI Implementation Guide · Jeevan Sandhu</title>
+<meta name="description" content="A step-by-step guide and workbook to build your own AI strategy, without needing to be technical. Join the waitlist for the founding price.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<!-- JSandhu AI design system -->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<header class="nav" data-theme="green">
+  <div class="wrap"><a class="jsa-wordmark wordmark" href="index.html">Jeevan <span class="jsa-wordmark__accent">Sandhu</span></a></div>
+</header>
+
+<main>
+  <section class="band jsa-surface" data-theme="green">
+    <div class="wrap split">
+
+      <div class="jsa-stack">
+        <p class="label jsa-muted" id="greeting">Thanks for your answers</p>
+        <h1 class="chapter-title web-hero">A call isn't the right next step yet. This is.</h1>
+        <p class="lead">The AI Implementation Guide walks you through the same process I'd use in an audit, so you can <span class="jsa-highlight">build your own AI strategy</span> at your own pace.</p>
+        <p class="body" id="industryLine" hidden></p>
+        <div class="jsa-checklist">
+          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>9 stages, from finding where your hours go to a written AI plan</span></div>
+          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>A workbook that does the sums: time saved, cost and payback</span></div>
+          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>Every idea tested on Value, Adoption and Risk</span></div>
+          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>Plain English, no technical skills needed</span></div>
+        </div>
+      </div>
+
+      <div class="jsa-stack" style="gap: 16px">
+        <div class="embed-box" data-theme="paper">
+          <h2 class="step-heading">Join the waitlist</h2>
+          <p class="small jsa-muted" style="margin-top: 4px">The guide opens to early members first, at a founding price. I'll email you when it's ready.</p>
+          <iframe id="waitlist" data-tally-src="https://tally.so/embed/GeRp2e?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1&amp;source=qualify" loading="lazy" width="100%" height="320" title="AI Implementation Guide waitlist"></iframe>
+          <p class="small jsa-muted" style="padding-bottom: 12px">Form not loading? <a id="waitlistLink" href="https://tally.so/r/GeRp2e?source=qualify">Open it here</a>.</p>
+        </div>
+        <p class="small">Situation changed, or picked the wrong answer? <a href="index.html">Go back to the questions</a>.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band jsa-surface">
+    <div class="wrap jsa-stack">
+      <p class="label jsa-muted">What you'll finish with</p>
+      <div class="jsa-grid-3">
+        <div class="jsa-card"><h3 class="strip-heading">Your time leaks, costed</h3><p class="card-text">The tasks eating your week, worked out in hours and pounds.</p></div>
+        <div class="jsa-card"><h3 class="strip-heading">Ideas worth doing</h3><p class="card-text">Only the ones that pay back, that your team will use and that keep your data safe.</p></div>
+        <div class="jsa-card jsa-card--filled"><h3 class="strip-heading">A two-page AI strategy</h3><p class="card-text">A roadmap with a first pilot, ready to share with your team.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-theme="green">
+  <div class="wrap jsa-running running">
+    <span>© <span id="year">2026</span> Jeevan Sandhu · AI, implemented properly</span>
+    <span>@jsandhu.ai</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  var q = new URLSearchParams(location.search);
+  var first = (q.get("name") || "").slice(0, 40);
+  var sector = (q.get("industry") || "").slice(0, 80);
+  if (first) document.getElementById("greeting").textContent = "Thanks, " + first;
+  if (sector) {
+    var line = document.getElementById("industryLine");
+    line.textContent = "Built for any business, " + sector + " included. You start from your own week, your own tasks and your own numbers.";
+    line.hidden = false;
+    // Pass the industry into the waitlist so you can see who's signing up
+    var add = "&industry=" + encodeURIComponent(sector);
+    var f = document.getElementById("waitlist");
+    f.dataset.tallySrc += add;
+    document.getElementById("waitlistLink").href += add;
+  }
+
+  var d = document, w = "https://tally.so/widgets/embed.js";
+  var v = function () {
+    if (typeof Tally !== "undefined") { Tally.loadEmbeds(); }
+    else { d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc; }); }
+  };
+  if (typeof Tally !== "undefined") v();
+  else if (d.querySelector('script[src="' + w + '"]') == null) {
+    var s = d.createElement("script"); s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
+  }
+</script>
+</body>
+</html>

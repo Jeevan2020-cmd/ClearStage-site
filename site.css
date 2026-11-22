@@ -1,0 +1,57 @@
+/* Website layer for the JSandhu AI design system.
+   Load order: fonts, tokens.css, components.css, then this file.
+   Only what the design system doesn't cover: page sections, web type sizes, the button and the form. */
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--bottle-green); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* Sections: a green or paper band using the design system's surface */
+.band { padding: 72px 24px; }
+.wrap { max-width: 1080px; margin: 0 auto; }
+.split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 56px; align-items: start; }
+
+/* Web sizes for the display styles (same face, weight and tracking, scaled for screens) */
+.web-hero.chapter-title { font-size: clamp(38px, 5.4vw, 60px); line-height: 1.06; letter-spacing: -0.024em; text-wrap: balance; }
+.nav .jsa-wordmark { font-size: 26px; line-height: 1; letter-spacing: -0.02em; text-decoration: none; }
+.nav, .footer { background: var(--bottle-green); color: var(--paper); padding: 20px 24px; }
+.footer { padding: 28px 24px; }
+
+/* Button: a filled panel block, radius-md, 2px rule */
+.site-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 26px; border-radius: var(--radius-md); border: var(--rule) solid var(--panel); background: var(--panel); color: var(--on-panel); font-family: var(--font-sans); font-weight: 600; font-size: 17px; line-height: 1.2; text-decoration: none; cursor: pointer; }
+.site-btn:hover { filter: brightness(1.1); }
+.site-btn:focus-visible, .site-input:focus-visible, .site-choice input:focus-visible + span { outline: 3px solid var(--highlight); outline-offset: 3px; }
+
+/* Form card: a paper panel on the green band */
+.form-card { background: var(--surface); color: var(--ink); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; gap: var(--space-24); }
+.field { display: flex; flex-direction: column; gap: var(--space-8); border: 0; padding: 0; margin: 0; min-width: 0; }
+.field legend { padding: 0; margin-bottom: var(--space-4); }
+.row-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-16); }
+.site-input { font: inherit; font-family: var(--font-sans); font-size: 16px; color: var(--ink); background: #fff; border: var(--rule) solid var(--line); border-radius: var(--radius-md); padding: 12px 14px; width: 100%; min-height: 48px; }
+textarea.site-input { min-height: 88px; resize: vertical; }
+select.site-input { appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--bottle-green) 50%), linear-gradient(135deg, var(--bottle-green) 50%, transparent 50%);
+  background-position: calc(100% - 22px) 21px, calc(100% - 16px) 21px; background-size: 6px 6px; background-repeat: no-repeat; }
+.choices { display: flex; flex-direction: column; gap: var(--space-8); }
+.site-choice { position: relative; display: block; cursor: pointer; }
+.site-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.site-choice span { display: flex; align-items: center; gap: var(--space-12); min-height: 48px; padding: 10px 14px; border: var(--rule) solid var(--line); border-radius: var(--radius-md); background: #fff; }
+.site-choice span::before { content: ""; flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; border: var(--rule) solid var(--line-strong); background: #fff; }
+.site-choice input:checked + span { border-color: var(--line-strong); }
+.site-choice input:checked + span::before { background: var(--line-strong); box-shadow: inset 0 0 0 3px #fff; }
+.form-error { color: #8a1f11; display: none; }
+.form-error.show { display: block; }
+[hidden] { display: none !important; }
+
+.photo-chip { display: flex; gap: var(--space-16); align-items: center; }
+.photo-chip img { width: 72px; height: 72px; object-fit: cover; object-position: 50% 30%; border-radius: var(--radius-full); border: 3px solid var(--paper); }
+
+.embed-box { background: var(--surface); color: var(--ink); border-radius: var(--radius-lg); padding: 20px 24px 8px; }
+.embed-box iframe { width: 100%; border: 0; min-height: 320px; }
+
+@media (max-width: 860px) {
+  .band { padding: 56px 20px; }
+  .split, .row-2, .jsa-grid-3 { grid-template-columns: 1fr; gap: 28px; }
+  .form-card { padding: 22px; }
+}

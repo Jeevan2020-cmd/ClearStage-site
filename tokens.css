@@ -1,0 +1,75 @@
+/* JSandhu AI: generated from tokens.json */
+:root, [data-theme="paper"] {
+  --bottle-green: #1a4f3c;
+  --paper: #f6f1e7;
+  --marigold: #f2b33d;
+  --slate: #56615a;
+  --surface: var(--paper);
+  --ink: var(--bottle-green);
+  --muted: var(--slate);
+  --line: var(--slate);
+  --line-strong: var(--bottle-green);
+  --panel: var(--bottle-green);
+  --on-panel: var(--paper);
+  --highlight: var(--marigold);
+  --on-highlight: var(--bottle-green);
+}
+[data-theme="green"] {
+  --surface: var(--bottle-green);
+  --ink: var(--paper);
+  --muted: var(--paper);
+  --line: var(--paper);
+  --line-strong: var(--paper);
+  --panel: var(--paper);
+  --on-panel: var(--bottle-green);
+}
+:root {
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --page-margin-y: 56px;
+  --page-margin-x: 72px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+  --radius-circle: 50%;
+  --rule-hairline: 1px;
+  --rule: 2px;
+  --frame: 6px;
+  --page-width: 794px;
+  --page-height: 1123px;
+  --checkbox: 20px;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+}
+.numeral { font-family: var(--font-display); font-size: 200px; line-height: 180px; font-weight: 700; letter-spacing: -6px; }
+.cover-title { font-family: var(--font-display); font-size: 84px; line-height: 86px; font-weight: 700; letter-spacing: -2px; }
+.chapter-title { font-family: var(--font-display); font-size: 68px; line-height: 72px; font-weight: 700; letter-spacing: -1.6px; }
+.page-title { font-family: var(--font-display); font-size: 56px; line-height: 60px; font-weight: 700; letter-spacing: -1.2px; }
+.wordmark { font-family: var(--font-display); font-size: 40px; line-height: 40px; font-weight: 700; letter-spacing: -0.8px; }
+.heading { font-family: var(--font-display); font-size: 32px; line-height: 38px; font-weight: 700; letter-spacing: -0.5px; }
+.section-heading { font-family: var(--font-display); font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.4px; }
+.figure { font-family: var(--font-display); font-size: 26px; line-height: 30px; font-weight: 700; }
+.step-heading { font-family: var(--font-display); font-size: 24px; line-height: 30px; font-weight: 700; }
+.strip-heading { font-family: var(--font-display); font-size: 20px; line-height: 26px; font-weight: 700; }
+.lead { font-family: var(--font-sans); font-size: 22px; line-height: 33px; font-weight: 400; }
+.body-large { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 16px; line-height: 25px; font-weight: 400; }
+.list-item { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.body-strong { font-family: var(--font-sans); font-size: 16px; line-height: 22px; font-weight: 600; }
+.body-small { font-family: var(--font-sans); font-size: 15px; line-height: 23px; font-weight: 400; }
+.small { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
+.card-text { font-family: var(--font-sans); font-size: 14px; line-height: 21px; font-weight: 400; }
+.small-strong { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.label { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 600; }
+.caption { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 400; }
+.running { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 600; }

@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Readiness Score · Jeevan Sandhu</title>
+<meta name="description" content="Is your business ready to implement AI properly? Answer 16 yes or no questions in about three minutes and get your free AI Readiness Score.">
+<meta property="og:title" content="What's your AI Readiness Score?">
+<meta property="og:description" content="16 yes or no questions, about three minutes. Find out where your business stands on Value, Adoption and Risk, and what to fix first.">
+<meta property="og:image" content="https://www.clearstageconsulting.com/jeevan.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<!-- JSandhu AI design system -->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  .quiz { max-width: 760px; margin: 0 auto; }
+  .screen[hidden] { display: none; }
+  .progress { height: 8px; background: rgba(246, 241, 231, 0.2); border-radius: var(--radius-full); overflow: hidden; }
+  .progress span { display: block; height: 100%; width: 0; background: var(--highlight); border-radius: var(--radius-full); transition: width .3s ease; }
+  .q { display: block; padding: 0 0 var(--space-20); margin: 0 0 var(--space-20); border-bottom: var(--rule-hairline) solid var(--line); }
+  .q legend { float: left; width: 100%; margin-bottom: var(--space-12); }
+  .q .yn { clear: both; }
+  .yn { display: grid; grid-template-columns: repeat(2, minmax(0, 140px)); gap: var(--space-8); }
+  .yn .site-choice span { justify-content: center; }
+  .yn .site-choice span::before { display: none; }
+  .yn .site-choice input:checked + span { background: var(--panel); color: var(--on-panel); }
+  .nav-row { display: flex; justify-content: space-between; align-items: center; gap: var(--space-16); flex-wrap: wrap; }
+  .back { background: none; border: 0; padding: 8px 0; font: inherit; font-weight: 600; color: var(--muted); cursor: pointer; text-decoration: underline; min-height: 44px; }
+  .score-row { display: flex; align-items: flex-end; gap: var(--space-24); flex-wrap: wrap; }
+  .score-row .numeral { font-size: clamp(96px, 16vw, 160px); line-height: 0.85; }
+  .bar { height: 10px; background: rgba(26, 79, 60, 0.12); border-radius: var(--radius-full); overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--line-strong); border-radius: var(--radius-full); }
+  .area-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-8); }
+  .check-consent { display: flex; gap: var(--space-12); align-items: flex-start; cursor: pointer; }
+  .check-consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--bottle-green); flex-shrink: 0; }
+  .intro-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-12); }
+  @media (max-width: 860px) { .intro-list { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .progress span { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="nav" data-theme="green">
+  <div class="wrap"><span class="jsa-wordmark wordmark">Jeevan <span class="jsa-wordmark__accent">Sandhu</span></span></div>
+</header>
+
+<main class="band jsa-surface" data-theme="green" style="min-height: 80vh">
+  <div class="quiz jsa-stack">
+
+    <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+
+    <!-- 0. Intro -->
+    <section class="screen jsa-stack" data-step="0">
+      <p class="label jsa-muted">Free assessment · about 3 minutes</p>
+      <h1 class="chapter-title web-hero">What's your AI Readiness Score?</h1>
+      <p class="lead">Most businesses jump straight to AI tools. The ones that get results check three things first: is it worth it, will the team use it, and is it safe? Answer 16 yes or no questions to see <span class="jsa-highlight">where you stand</span> and what to fix first.</p>
+      <div class="intro-list">
+        <div class="jsa-card jsa-card--strong"><span class="figure">16</span><span class="small">yes or no questions about how your business runs today</span></div>
+        <div class="jsa-card jsa-card--strong"><span class="figure">4</span><span class="small">areas scored: Foundations, Value, Adoption and Risk</span></div>
+        <div class="jsa-card jsa-card--strong"><span class="figure">1</span><span class="small">clear priority to work on first, with a quick win</span></div>
+      </div>
+      <div class="nav-row">
+        <button class="site-btn" type="button" data-next>Start the assessment</button>
+        <div class="photo-chip" style="max-width: 360px">
+          <img src="jeevan.jpg" alt="Jeevan Sandhu" width="72" height="72">
+          <p class="small">Built by Jeevan Sandhu. Plain English, no technical knowledge needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 to 4. Scored areas (filled in by the script) -->
+    <div id="areas"></div>
+
+    <!-- 5. About your business -->
+    <section class="screen" data-step="5" hidden>
+      <div class="form-card" data-theme="paper">
+        <div class="jsa-step">
+          <span class="label jsa-muted">Part 5 of 6 · About your business</span>
+          <h2 class="step-heading">A few details so your results fit your business</h2>
+        </div>
+        <div class="field">
+          <label class="body-strong" for="industry">What type of business is it?</label>
+          <select class="site-input" id="industry">
+            <option value="" selected disabled>Choose your industry</option>
+            <option>Accountancy and bookkeeping</option>
+            <option>Legal</option>
+            <option>Estate agency and property</option>
+            <option>Recruitment</option>
+            <option>Marketing, design or creative agency</option>
+            <option>IT and tech services</option>
+            <option>Consulting and professional services</option>
+            <option>Financial services and insurance</option>
+            <option>Construction and trades</option>
+            <option>Health, beauty and wellness</option>
+            <option>Hospitality and events</option>
+            <option>Retail and e-commerce</option>
+            <option>Manufacturing and engineering</option>
+            <option>Education and training</option>
+            <option>Charity or non-profit</option>
+            <option value="other">Something else</option>
+          </select>
+          <input class="site-input" type="text" id="industryOther" placeholder="Tell me your industry" hidden>
+        </div>
+        <fieldset class="field">
+          <legend class="body-strong">What's your role in the business?</legend>
+          <div class="choices">
+            <label class="site-choice"><input type="radio" name="role" value="owner"><span class="body">Owner, director or co-founder</span></label>
+            <label class="site-choice"><input type="radio" name="role" value="signoff"><span class="body">Manager who can sign off spending</span></label>
+            <label class="site-choice"><input type="radio" name="role" value="researching"><span class="body">I'm looking into it for someone else</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend class="body-strong">When do you want to start using AI properly?</legend>
+          <div class="choices">
+            <label class="site-choice"><input type="radio" name="when" value="month"><span class="body">In the next month</span></label>
+            <label class="site-choice"><input type="radio" name="when" value="quarter"><span class="body">In the next 3 months</span></label>
+            <label class="site-choice"><input type="radio" name="when" value="later"><span class="body">Later this year or beyond</span></label>
+            <label class="site-choice"><input type="radio" name="when" value="exploring"><span class="body">I'm just exploring</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend class="body-strong">If expert help showed a clear return, would you invest in it?</legend>
+          <div class="choices">
+            <label class="site-choice"><input type="radio" name="invest" value="yes"><span class="body">Yes, I've got budget for this</span></label>
+            <label class="site-choice"><input type="radio" name="invest" value="numbers"><span class="body">Yes, if I can see the return</span></label>
+            <label class="site-choice"><input type="radio" name="invest" value="diy"><span class="body">Not right now, I'd rather do it myself</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label class="body-strong" for="drain">What's eating the most time in your week? <span class="small jsa-muted">(optional)</span></label>
+          <textarea class="site-input" id="drain" placeholder="For example: replying to enquiries, writing quotes, chasing invoices"></textarea>
+        </div>
+        <p class="form-error small-strong" data-error role="alert">Please choose your industry and answer the three questions.</p>
+        <div class="nav-row">
+          <button class="back" type="button" data-back>Back</button>
+          <button class="site-btn" type="button" data-next>Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Contact gate -->
+    <section class="screen" data-step="6" hidden>
+      <form class="form-card" id="gate" data-theme="paper" novalidate>
+        <div class="jsa-step">
+          <span class="label jsa-muted">Part 6 of 6 · Your results are ready</span>
+          <h2 class="step-heading">Where should I send your results?</h2>
+          <p class="small jsa-muted">You'll see your score and your priority straight away.</p>
+        </div>
+        <div class="row-2">
+          <div class="field">
+            <label class="body-strong" for="firstName">First name</label>
+            <input class="site-input" type="text" id="firstName" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label class="body-strong" for="email">Email</label>
+            <input class="site-input" type="email" id="email" autocomplete="email">
+          </div>
+        </div>
+        <div class="field">
+          <label class="body-strong" for="business">Business name</label>
+          <input class="site-input" type="text" id="business" autocomplete="organization">
+        </div>
+        <label class="check-consent small">
+          <input type="checkbox" id="consent">
+          <span>Send me occasional plain-English tips on implementing AI. Unsubscribe any time.</span>
+        </label>
+        <p class="form-error small-strong" data-error role="alert">Please add your first name, a valid email and your business name.</p>
+        <div class="nav-row">
+          <button class="back" type="button" data-back>Back</button>
+          <button class="site-btn" type="submit">Show my results</button>
+        </div>
+        <p class="small jsa-muted">I'll use your details to send your results and follow up about them. I never share them with anyone else.</p>
+      </form>
+    </section>
+
+    <!-- 7. Results -->
+    <section class="screen jsa-stack" data-step="7" hidden aria-live="polite">
+      <p class="label jsa-muted" id="r-hello">Your results</p>
+      <div class="score-row">
+        <span class="numeral" id="r-percent">0%</span>
+        <div class="jsa-step" style="padding-bottom: 12px">
+          <span class="label jsa-muted">AI Readiness Score</span>
+          <h1 class="step-heading" id="r-tier" style="font-size: 32px; line-height: 38px">Tier</h1>
+        </div>
+      </div>
+      <p class="lead" id="r-tier-text"></p>
+
+      <div class="form-card" data-theme="paper">
+        <h2 class="step-heading">Your scores by area</h2>
+        <div class="jsa-grid-2" id="r-areas"></div>
+      </div>
+
+      <div class="jsa-panel" id="r-priority"></div>
+
+      <div class="jsa-card jsa-card--roomy" id="r-next"></div>
+      <p class="small">Take a screenshot to keep your results handy.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer" data-theme="green">
+  <div class="wrap jsa-running running">
+    <span>© <span id="year">2026</span> Jeevan Sandhu · AI, implemented properly</span>
+    <span>@jsandhu.ai</span>
+  </div>
+</footer>
+
+<script>
+  // ---------------- Settings: change these if your links change ----------------
+  // Leads are emailed here by FormSubmit (free, no account). After activating, you can swap the
+  // address for the random alias FormSubmit gives you, so your email isn't visible in the page source.
+  var LEAD_INBOX = "clearstageinfo@gmail.com";
+  var BOOKING_URL  = "https://calendly.com/clearstageinfo/ai-discovery-call";
+  var PRODUCTS_URL = "products.html";
+
+  // Need: a decision-maker who wants to start within 3 months
+  // Budget: willing to invest in expert help
+  // Need AND budget -> discovery call. Anything else -> the guide.
+  var NEED   = { role: ["owner", "signoff"], when: ["month", "quarter"] };
+  var BUDGET = { invest: ["yes", "numbers"] };
+  // ------------------------------------------------------------------------------
+
+  var AREAS = [
+    { key: "foundations", name: "Foundations", sub: "Do you know where your time goes?",
+      qs: ["Could you name your three most time-consuming tasks, and roughly how many hours each takes a week?",
+           "Are your key processes, like enquiry to invoice, written down anywhere?",
+           "Do you know which jobs get done the same way every time?",
+           "Is your business information mostly in one or two systems, rather than spread across spreadsheets and inboxes?"],
+      low: "You can't fix what you can't see. Before any AI tool, you need a clear picture of where the hours go.",
+      win: "This week, write down your three busiest processes step by step, with roughly how long each step takes." },
+    { key: "value", name: "Value", sub: "Is it worth it?",
+      qs: ["Do you know roughly what an hour of your team's time costs the business?",
+           "Before you buy a new tool, do you work out how quickly it would pay for itself?",
+           "Could you say what each tool you pay for saves you each month?",
+           "Do you review your software subscriptions at least once a year?"],
+      low: "Without the numbers, AI spending is guesswork. That's how businesses end up paying for tools nobody uses.",
+      win: "List every tool you pay for, what it costs a month, and what it actually saves. Cancel anything you can't justify." },
+    { key: "adoption", name: "Adoption", sub: "Will your team use it?",
+      qs: ["Have you asked your team which tasks they'd most like help with?",
+           "When a new tool comes in, is someone responsible for getting everyone using it?",
+           "Is everyone who uses AI at work using it in roughly the same way?",
+           "Does your team get time to learn new tools, rather than squeezing it in?"],
+      low: "The best tool fails if your team doesn't use it. Adoption is planned, not hoped for.",
+      win: "Ask each person on your team which task they dread most. Their answers are your best starting points." },
+    { key: "risk", name: "Risk", sub: "Is it safe?",
+      qs: ["Do you have written rules on what can and can't go into AI tools?",
+           "Do you know where the AI tools your team uses store your data?",
+           "Does a person check anything AI writes before it reaches a customer?",
+           "Would you know what to do if client details went into the wrong tool?"],
+      low: "If your team already uses AI with no rules, client data could be going places you can't take back.",
+      win: "Write a one-page rule on what never goes into an AI tool, such as client names, contracts and financial details, and share it today." }
+  ];
+
+  var TIERS = [
+    { min: 75, name: "Ready to implement", text: "The basics are in place. The next job is choosing which AI ideas are actually worth doing, and testing them properly before you roll them out." },
+    { min: 40, name: "Building foundations", text: "Some of the pieces are there. Your lowest area is holding the rest back, so that's where to start." },
+    { min: 0,  name: "Getting started", text: "The groundwork isn't there yet, which is completely normal. AI tools come after knowing where your time goes, so start with your priority below." }
+  ];
+
+  var LABELS = {
+    role:   { owner: "Owner/director", signoff: "Manager with sign-off", researching: "Researching for someone else" },
+    invest: { yes: "Has budget", numbers: "Will invest if the return is clear", diy: "Prefers DIY" },
+    when:   { month: "Next month", quarter: "Next 3 months", later: "Later", exploring: "Exploring" }
+  };
+
+  // ----- Build the four scored screens -----
+  var areasEl = document.getElementById("areas");
+  AREAS.forEach(function (a, i) {
+    var s = document.createElement("section");
+    s.className = "screen"; s.dataset.step = String(i + 1); s.hidden = true;
+    var html = '<div class="form-card" data-theme="paper">' +
+      '<div class="jsa-step"><span class="label jsa-muted">Part ' + (i + 1) + ' of 6 · ' + a.name + '</span>' +
+      '<h2 class="step-heading">' + a.sub + '</h2></div><div>';
+    a.qs.forEach(function (q, j) {
+      var n = a.key + j;
+      html += '<fieldset class="field q"><legend class="body">' + q + '</legend><div class="yn">' +
+        '<label class="site-choice"><input type="radio" name="' + n + '" value="1"><span class="body-strong">Yes</span></label>' +
+        '<label class="site-choice"><input type="radio" name="' + n + '" value="0"><span class="body-strong">No</span></label>' +
+        '</div></fieldset>';
+    });
+    html += '</div><p class="form-error small-strong" data-error role="alert">Please answer all four questions.</p>' +
+      '<div class="nav-row"><button class="back" type="button" data-back>Back</button>' +
+      '<button class="site-btn" type="button" data-next>Next</button></div></div>';
+    s.innerHTML = html;
+    areasEl.appendChild(s);
+  });
+
+  // ----- Navigation -----
+  var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"))
+    .sort(function (x, y) { return x.dataset.step - y.dataset.step; });
+  var step = 0;
+  var bar = document.getElementById("bar");
+
+  function show(n) {
+    screens.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
+    step = n;
+    bar.style.width = Math.round((n / 7) * 100) + "%";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    var h = screens[n].querySelector("h1, h2");
+    if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+  }
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function picked(name) {
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : "";
+  }
+  function sector() { var i = document.getElementById("industry"); return i.value === "other" ? val("industryOther") : i.value; }
+
+  function valid(n) {
+    if (n >= 1 && n <= 4) {
+      var a = AREAS[n - 1];
+      return a.qs.every(function (_, j) { return picked(a.key + j) !== ""; });
+    }
+    if (n === 5) return sector() && picked("role") && picked("when") && picked("invest");
+    return true;
+  }
+
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    if (t.matches("[data-next]")) {
+      var err = screens[step].querySelector("[data-error]");
+      if (!valid(step)) { if (err) err.classList.add("show"); return; }
+      if (err) err.classList.remove("show");
+      show(step + 1);
+    }
+    if (t.matches("[data-back]")) show(step - 1);
+  });
+
+  var industry = document.getElementById("industry");
+  industry.addEventListener("change", function () {
+    var o = document.getElementById("industryOther");
+    o.hidden = industry.value !== "other";
+    if (!o.hidden) o.focus();
+  });
+
+  // ----- Send a lead to your inbox (picked up hourly into the Excel tracker) -----
+  function saveLead(lead) {
+    var body = Object.assign({
+      _subject: "AI Readiness lead: " + lead.email,
+      _template: "table",
+      _captcha: "false"
+    }, lead);
+    try {
+      fetch("https://formsubmit.co/ajax/" + LEAD_INBOX, {
+        method: "POST", keepalive: true,
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(body)
+      }).catch(function () {});
+    } catch (x) {}
+  }
+
+  // ----- Scoring, saving and results -----
+  document.getElementById("gate").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var err = this.querySelector("[data-error]");
+    var first = val("firstName"), email = val("email"), business = val("business");
+    if (!first || !business || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.classList.add("show"); return; }
+    err.classList.remove("show");
+
+    var scores = {}, total = 0;
+    AREAS.forEach(function (a) {
+      var s = 0; a.qs.forEach(function (_, j) { s += Number(picked(a.key + j)); });
+      scores[a.key] = s; total += s;
+    });
+    var percent = Math.round((total / 16) * 100);
+    var tier = TIERS.filter(function (t) { return percent >= t.min; })[0];
+    var lowest = AREAS.slice().sort(function (x, y) { return scores[x.key] - scores[y.key]; })[0];
+
+    var ans = { role: picked("role"), when: picked("when"), invest: picked("invest") };
+    var need = NEED.role.indexOf(ans.role) !== -1 && NEED.when.indexOf(ans.when) !== -1;
+    var budget = BUDGET.invest.indexOf(ans.invest) !== -1;
+    var route = need && budget ? "discovery_call" : "guide";
+
+    // Save the lead: one field per spreadsheet column
+    function clean(s) { return String(s).replace(/[<>]/g, "").replace(/[\r\n\t]+/g, " ").trim().slice(0, 500); }
+    var leadId = "L" + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2, 6).toUpperCase();
+    saveLead({
+      lead_id: leadId,
+      submitted: new Date().toISOString(),
+      first_name: clean(first),
+      email: email.toLowerCase(),
+      business: clean(business),
+      industry: clean(sector()),
+      role: LABELS.role[ans.role],
+      timeline: LABELS.when[ans.when],
+      budget: LABELS.invest[ans.invest],
+      score: String(percent),
+      tier: tier.name,
+      foundations: String(scores.foundations),
+      value: String(scores.value),
+      adoption: String(scores.adoption),
+      risk: String(scores.risk),
+      priority: lowest.name,
+      route: route === "discovery_call" ? "Discovery call" : "Guide",
+      time_drain: clean(val("drain")) || "-",
+      source: clean(new URLSearchParams(location.search).get("source") || "website"),
+      marketing_consent: document.getElementById("consent").checked ? "Yes" : "No"
+    });
+
+    // Results
+    document.getElementById("r-hello").textContent = "Your results, " + first;
+    document.getElementById("r-percent").textContent = percent + "%";
+    document.getElementById("r-tier").textContent = tier.name;
+    document.getElementById("r-tier-text").textContent = tier.text;
+
+    document.getElementById("r-areas").innerHTML = AREAS.map(function (a) {
+      var s = scores[a.key];
+      return '<div class="jsa-step"><div class="area-head"><span class="body-strong">' + a.name + '</span>' +
+        '<span class="small jsa-muted">' + s + ' out of 4</span></div>' +
+        '<div class="bar"><span style="width:' + (s / 4 * 100) + '%"></span></div>' +
+        '<span class="small jsa-muted">' + a.sub + '</span></div>';
+    }).join("");
+
+    document.getElementById("r-priority").innerHTML =
+      '<span class="label">Your priority: ' + lowest.name + '</span>' +
+      '<h2 class="step-heading">' + lowest.sub + '</h2>' +
+      '<p class="body">' + lowest.low + '</p>' +
+      '<p class="body"><strong>Quick win:</strong> ' + lowest.win + '</p>';
+
+    var next = document.getElementById("r-next");
+    if (route === "discovery_call") {
+      var notes = "Score: " + percent + "% (" + tier.name + ") | Priority: " + lowest.name +
+        " | Business: " + business + " | Industry: " + sector() +
+        " | Role: " + LABELS.role[ans.role] + " | Start: " + LABELS.when[ans.when] +
+        " | Budget: " + LABELS.invest[ans.invest] + (val("drain") ? " | Time drain: " + val("drain") : "");
+      var url = BOOKING_URL + "?name=" + encodeURIComponent(first) + "&email=" + encodeURIComponent(email) +
+        "&a1=" + encodeURIComponent(notes);
+      next.innerHTML = '<span class="label jsa-muted">Your next step</span>' +
+        '<h2 class="step-heading">Let\'s turn this into a plan</h2>' +
+        '<p class="body">You\'re ready to move and open to investing, so the fastest route is a free 20-minute discovery call. We\'ll look at your ' + lowest.name.toLowerCase() + ' gap and where AI could save you the most time. If an AI audit would help, I\'ll explain it. If it won\'t, I\'ll tell you.</p>' +
+        '<div><a class="site-btn" href="' + url + '">Book your free discovery call</a></div>';
+    } else {
+      var purl = PRODUCTS_URL + "?name=" + encodeURIComponent(first) + "&industry=" + encodeURIComponent(sector());
+      next.innerHTML = '<span class="label jsa-muted">Your next step</span>' +
+        '<h2 class="step-heading">Fix it yourself, step by step</h2>' +
+        '<p class="body">The AI Implementation Guide walks you through the same 9-stage process I use with clients, starting with your ' + lowest.name.toLowerCase() + ' gap. You finish with your own written AI strategy, at your own pace.</p>' +
+        '<div><a class="site-btn" href="' + purl + '">See the guide</a></div>';
+    }
+    show(7);
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
