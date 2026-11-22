@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The AI Implementation Guide · Jeevan Sandhu</title>
-<meta name="description" content="A step-by-step guide and workbook to build your own AI strategy, without needing to be technical. Join the waitlist for the founding price.">
-<meta name="robots" content="noindex">
+<title>The AI Implementation Guide · From AI confusion to a clear plan · Jeevan Sandhu</title>
+<meta name="description" content="A 9-stage guide and workbook that takes business owners from not knowing where to start with AI to their own clear, tested AI strategy. No coding needed. Founding edition, £27.">
+<meta property="og:title" content="The AI Implementation Guide: From AI Confusion to a Clear Plan for Your Business">
+<meta property="og:description" content="9 stages, one workbook, your own AI strategy. No coding, no jargon, no hype.">
+<meta property="og:image" content="https://www.clearstageconsulting.com/guide-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;600&display=swap">
@@ -13,6 +15,31 @@
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="components.css">
 <link rel="stylesheet" href="site.css">
+<style>
+  .buy-card { background: var(--surface); color: var(--ink); border-radius: var(--radius-lg); padding: 24px; display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; align-items: center; }
+  .buy-card img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 10px 24px rgba(0,0,0,.18); display: block; }
+  .price { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1; letter-spacing: -0.02em; }
+  .price small { font-family: var(--font-sans); font-weight: 600; font-size: 14px; letter-spacing: 0; margin-left: 8px; }
+  .buy-card .site-btn { width: 100%; }
+  .fromto { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); gap: 16px; align-items: stretch; }
+  .fromto .arrow { display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 32px; }
+  .fromto ul, .fit ul { margin: 0; padding-left: 20px; }
+  .fromto li, .fit li { margin-bottom: 8px; }
+  .stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .stage-num { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1; }
+  .faq details { border-bottom: var(--rule) solid var(--line); padding: 16px 0; }
+  .faq summary { cursor: pointer; font-weight: 600; font-size: 17px; }
+  .faq p { margin: 10px 0 0; }
+  .center { text-align: center; align-items: center; }
+  @media (max-width: 760px) {
+    .buy-card { grid-template-columns: 1fr; }
+    .buy-card img { max-width: 200px; margin: 0 auto; }
+    .fromto { grid-template-columns: 1fr; }
+    .fromto .arrow { transform: rotate(90deg); }
+    .stages { grid-template-columns: 1fr 1fr; }
+    .fit.jsa-grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
@@ -21,43 +48,144 @@
 </header>
 
 <main>
+  <!-- HERO -->
   <section class="band jsa-surface" data-theme="green">
     <div class="wrap split">
 
       <div class="jsa-stack">
-        <p class="label jsa-muted" id="greeting">Thanks for your answers</p>
-        <h1 class="chapter-title web-hero">A call isn't the right next step yet. This is.</h1>
-        <p class="lead">The AI Implementation Guide walks you through the same process I'd use in an audit, so you can <span class="jsa-highlight">build your own AI strategy</span> at your own pace.</p>
+        <p class="label jsa-muted" id="greeting">The AI Implementation Guide · Founding edition</p>
+        <h1 class="chapter-title web-hero">From AI confusion to a clear plan for your business.</h1>
+        <p class="lead">You know AI matters. You just don't know where to start. This guide gives you the process to <span class="jsa-highlight">implement AI properly</span>, one stage at a time.</p>
         <p class="body" id="industryLine" hidden></p>
         <div class="jsa-checklist">
-          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>9 stages, from finding where your hours go to a written AI plan</span></div>
+          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>9 stages, from finding where your hours go to a written AI strategy</span></div>
           <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>A workbook that does the sums: time saved, cost and payback</span></div>
-          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>Every idea tested on Value, Adoption and Risk</span></div>
-          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>Plain English, no technical skills needed</span></div>
+          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>Every idea tested on Value, Adoption and Risk before you spend a penny</span></div>
+          <div class="jsa-check list-item"><span class="jsa-check__box"></span><span>Plain English. No coding, no jargon, no hype.</span></div>
         </div>
       </div>
 
       <div class="jsa-stack" style="gap: 16px">
-        <div class="embed-box" data-theme="paper">
-          <h2 class="step-heading">Join the waitlist</h2>
-          <p class="small jsa-muted" style="margin-top: 4px">The guide opens to early members first, at a founding price. I'll email you when it's ready.</p>
-          <iframe id="waitlist" data-tally-src="https://tally.so/embed/GeRp2e?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1&amp;source=qualify" loading="lazy" width="100%" height="320" title="AI Implementation Guide waitlist"></iframe>
-          <p class="small jsa-muted" style="padding-bottom: 12px">Form not loading? <a id="waitlistLink" href="https://tally.so/r/GeRp2e?source=qualify">Open it here</a>.</p>
+        <div class="buy-card" data-theme="paper">
+          <img src="guide-cover.jpg" alt="Cover of The AI Implementation Guide" width="560" height="791">
+          <div class="jsa-stack" style="gap: 12px">
+            <p class="label jsa-muted">Founding edition</p>
+            <p class="price">£27<small>one-off payment</small></p>
+            <p class="small">40-page PDF guide + Excel workbook (works in Google Sheets). Instant download.</p>
+            <a class="site-btn buy" href="https://payhip.com/b/LvHWw">Get the guide</a>
+            <p class="small jsa-muted">Finish all 9 stages without a clear plan? Full refund.</p>
+          </div>
         </div>
-        <p class="small">Situation changed, or picked the wrong answer? <a href="index.html">Go back to the questions</a>.</p>
+        <p class="small" id="backLink" hidden>Situation changed, or picked the wrong answer? <a href="index.html">Go back to the questions</a>.</p>
       </div>
 
     </div>
   </section>
 
+  <!-- FROM / TO -->
   <section class="band jsa-surface">
-    <div class="wrap jsa-stack">
-      <p class="label jsa-muted">What you'll finish with</p>
-      <div class="jsa-grid-3">
-        <div class="jsa-card"><h3 class="strip-heading">Your time leaks, costed</h3><p class="card-text">The tasks eating your week, worked out in hours and pounds.</p></div>
-        <div class="jsa-card"><h3 class="strip-heading">Ideas worth doing</h3><p class="card-text">Only the ones that pay back, that your team will use and that keep your data safe.</p></div>
-        <div class="jsa-card jsa-card--filled"><h3 class="strip-heading">A two-page AI strategy</h3><p class="card-text">A roadmap with a first pilot, ready to share with your team.</p></div>
+    <div class="wrap jsa-stack" style="gap: 24px">
+      <p class="label jsa-muted">The shift</p>
+      <h2 class="heading">It isn't a technology problem. It's a process problem.</h2>
+      <div class="fromto">
+        <div class="jsa-card">
+          <h3 class="strip-heading">Where you are now</h3>
+          <ul class="body">
+            <li>Your team uses ChatGPT with no rules</li>
+            <li>You've paid for a tool nobody uses</li>
+            <li>A new "must-have" AI app every week</li>
+            <li>Unsure what's safe to put client data into</li>
+          </ul>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="jsa-card jsa-card--filled">
+          <h3 class="strip-heading">Where you'll be</h3>
+          <ul class="body">
+            <li>Your biggest time drains found and costed</li>
+            <li>Only ideas that pay back, that your team will use and that keep your data safe</li>
+            <li>A first pilot planned, with an owner and a success measure</li>
+            <li>Your own AI strategy on one page, ready to share</li>
+          </ul>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 9 STAGES -->
+  <section class="band jsa-surface" data-theme="green">
+    <div class="wrap jsa-stack" style="gap: 24px">
+      <p class="label jsa-muted">What's inside</p>
+      <h2 class="heading">9 stages. One workbook. Your strategy.</h2>
+      <p class="body" style="max-width: 640px">Each stage has plain-English steps, a worked example, common mistakes and a checkpoint so you know you're ready to move on. The workbook has a tab for every stage and works out the numbers for you.</p>
+      <div class="stages" data-theme="paper">
+        <div class="jsa-card"><p class="stage-num">01</p><h3 class="strip-heading">Start here</h3><p class="card-text">How the guide works and your first quick win.</p></div>
+        <div class="jsa-card"><p class="stage-num">02</p><h3 class="strip-heading">Assess your business</h3><p class="card-text">List your processes and see where time and money go.</p></div>
+        <div class="jsa-card"><p class="stage-num">03</p><h3 class="strip-heading">Find your bottlenecks</h3><p class="card-text">Map your top processes and spot the leaks.</p></div>
+        <div class="jsa-card"><p class="stage-num">04</p><h3 class="strip-heading">Is AI the answer?</h3><p class="card-text">Fix the process, automate it, or use AI. Score every idea.</p></div>
+        <div class="jsa-card"><p class="stage-num">05</p><h3 class="strip-heading">Value</h3><p class="card-text">Cost each idea and work out payback.</p></div>
+        <div class="jsa-card"><p class="stage-num">06</p><h3 class="strip-heading">Adoption</h3><p class="card-text">Make sure your team will actually use it.</p></div>
+        <div class="jsa-card"><p class="stage-num">07</p><h3 class="strip-heading">Risk</h3><p class="card-text">Protect your data, your customers and your business.</p></div>
+        <div class="jsa-card"><p class="stage-num">08</p><h3 class="strip-heading">Confident implementation</h3><p class="card-text">Your roadmap and a first pilot.</p></div>
+        <div class="jsa-card jsa-card--filled"><p class="stage-num">09</p><h3 class="strip-heading">Your strategy</h3><p class="card-text">Your AI strategy on one page.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIT -->
+  <section class="band jsa-surface">
+    <div class="wrap jsa-stack" style="gap: 24px">
+      <p class="label jsa-muted">Is it for you?</p>
+      <div class="jsa-grid-2 fit">
+        <div class="jsa-card jsa-card--strong">
+          <h3 class="strip-heading">It's for you if</h3>
+          <ul class="body">
+            <li>You run a business and want AI to save real time and money, not just look clever</li>
+            <li>You've dabbled with AI but feel stuck on what to do next</li>
+            <li>You want to do it properly: safely, with your team on board, without wasting money</li>
+          </ul>
+        </div>
+        <div class="jsa-card">
+          <h3 class="strip-heading">It's not for you if</h3>
+          <ul class="body">
+            <li>You want a list of the latest AI tools or prompt hacks</li>
+            <li>You're after overnight results without doing the work</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING + GUARANTEE + FAQ -->
+  <section class="band jsa-surface">
+    <div class="wrap split">
+      <div class="jsa-stack" style="gap: 16px">
+        <div class="jsa-panel" style="border-radius: var(--radius-lg); padding: 24px">
+          <p class="label">Founding edition</p>
+          <p class="body" style="margin-top: 8px">This is the first release, at a founding price for early buyers. I'd love your honest feedback on where you got stuck, so I can make it even better.</p>
+        </div>
+        <div class="jsa-card jsa-card--strong">
+          <h3 class="strip-heading">The guarantee</h3>
+          <p class="body">Work through all 9 stages. If you don't come out with a clear plan for AI in your business, email me and I'll refund you in full.</p>
+        </div>
+      </div>
+      <div class="faq">
+        <p class="label jsa-muted">Questions</p>
+        <details><summary>Do I need to be technical?</summary><p class="body">No. It's written in plain English for business owners. If you can use a spreadsheet, you can use the workbook.</p></details>
+        <details><summary>Does it work for my type of business?</summary><p class="body">Yes. You start from your own week, your own tasks and your own numbers, so it fits any business. The worked examples use a small service business.</p></details>
+        <details><summary>How long does it take?</summary><p class="body">It's self-paced. Each stage is a few pages with a checkpoint at the end, so you can do a stage at a time around your week.</p></details>
+        <details><summary>What do I get, and how?</summary><p class="body">A 40-page PDF guide and an Excel workbook (it also opens in Google Sheets). You get the download link straight after you pay.</p></details>
+        <details><summary>Would you rather I did it with you?</summary><p class="body">If you're ready to invest and want hands-on help, <a href="index.html">take the AI Readiness assessment</a> to see if a discovery call is the right fit.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="band jsa-surface" data-theme="green">
+    <div class="wrap jsa-stack center" style="gap: 16px">
+      <h2 class="heading">Stop chasing AI tools. Start implementing AI properly.</h2>
+      <p class="lead">Founding edition · £27 · instant download</p>
+      <div><a class="site-btn buy" href="https://payhip.com/b/LvHWw">Get the guide</a></div>
+      <p class="small jsa-muted">Not ready yet? <a href="https://tally.so/r/GeRp2e?source=products">Get updates by email</a>.</p>
     </div>
   </section>
 </main>
@@ -74,26 +202,13 @@
   var q = new URLSearchParams(location.search);
   var first = (q.get("name") || "").slice(0, 40);
   var sector = (q.get("industry") || "").slice(0, 80);
-  if (first) document.getElementById("greeting").textContent = "Thanks, " + first;
+  // Visitors sent here by the assessment get a personal greeting and a way back
+  if (first) document.getElementById("greeting").textContent = "Thanks, " + first + ". Here's your next step.";
+  if (first || sector) document.getElementById("backLink").hidden = false;
   if (sector) {
     var line = document.getElementById("industryLine");
     line.textContent = "Built for any business, " + sector + " included. You start from your own week, your own tasks and your own numbers.";
     line.hidden = false;
-    // Pass the industry into the waitlist so you can see who's signing up
-    var add = "&industry=" + encodeURIComponent(sector);
-    var f = document.getElementById("waitlist");
-    f.dataset.tallySrc += add;
-    document.getElementById("waitlistLink").href += add;
-  }
-
-  var d = document, w = "https://tally.so/widgets/embed.js";
-  var v = function () {
-    if (typeof Tally !== "undefined") { Tally.loadEmbeds(); }
-    else { d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc; }); }
-  };
-  if (typeof Tally !== "undefined") v();
-  else if (d.querySelector('script[src="' + w + '"]') == null) {
-    var s = d.createElement("script"); s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
   }
 </script>
 </body>
